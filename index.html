@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slay Tracker</title>
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Slay the Spire 2 analytics</p>
+        <h1>Slay Tracker</h1>
+      </div>
+      <nav class="tabs" aria-label="Navegacao principal">
+        <button class="tab active" data-view="upload">Upload</button>
+        <button class="tab" data-view="dashboard">Dashboard</button>
+        <button class="tab" data-view="library">Tabelas e graficos</button>
+        <button class="tab" data-view="builder">Criar analise</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="view active" id="upload">
+        <div class="upload-shell">
+          <div class="upload-panel">
+            <div>
+              <p class="eyebrow">Importacao</p>
+              <h2>Carregue suas runs exportadas</h2>
+              <p class="muted">Selecione os arquivos .run ou .json da pasta history. O processamento acontece localmente no navegador.</p>
+            </div>
+            <label class="dropzone" for="runFiles">
+              <input id="runFiles" type="file" multiple accept=".run,.json,application/json" />
+              <span class="drop-icon">+</span>
+              <strong>Escolher arquivos de run</strong>
+              <small>Use Ctrl+A dentro da pasta history para importar tudo de uma vez.</small>
+            </label>
+            <div class="upload-actions">
+              <button class="primary" id="loadDemo">Carregar exemplo</button>
+              <button class="ghost" id="clearData">Limpar dados</button>
+            </div>
+            <p id="uploadStatus" class="status">Nenhum arquivo importado ainda.</p>
+          </div>
+
+          <aside class="settings-panel">
+            <h3>Configuracoes de analise</h3>
+            <label class="switch-row">
+              <span>Modo escuro</span>
+              <input id="themeToggle" type="checkbox" checked />
+            </label>
+            <label class="check-row"><input type="checkbox" class="analysis-toggle" value="deaths" checked /><span>Trackear mortes e encontros fatais</span></label>
+            <label class="check-row"><input type="checkbox" class="analysis-toggle" value="floors" checked /><span>Progressao por floor level</span></label>
+            <label class="check-row"><input type="checkbox" class="analysis-toggle" value="deck" checked /><span>Tamanho do deck x win rate</span></label>
+            <label class="check-row"><input type="checkbox" class="analysis-toggle" value="cards" checked /><span>Pick rate e win rate por carta</span></label>
+            <label class="check-row"><input type="checkbox" class="analysis-toggle" value="economy" checked /><span>Ouro, dano e cura por run</span></label>
+          </aside>
+        </div>
+      </section>
+
+      <section class="view" id="dashboard">
+        <div class="section-head">
+          <div><p class="eyebrow">Widgets</p><h2>Dashboard inicial</h2></div>
+          <button class="ghost" id="resetLayout">Resetar layout</button>
+        </div>
+        <div class="kpi-grid" id="kpiGrid"></div>
+        <div class="widget-grid" id="widgetGrid"></div>
+      </section>
+
+      <section class="view" id="library">
+        <div class="section-head">
+          <div><p class="eyebrow">Detalhe</p><h2>Tabelas e graficos separados</h2></div>
+          <select id="detailSelect" class="select"></select>
+        </div>
+        <div id="detailContent" class="detail-content"></div>
+      </section>
+
+      <section class="view" id="builder">
+        <div class="section-head">
+          <div><p class="eyebrow">Sandbox</p><h2>Crie suas proprias analises</h2></div>
+          <button class="primary" id="addCustomChart">Gerar grafico</button>
+        </div>
+        <div class="builder-grid">
+          <label>Variavel X<select id="xMetric" class="select"></select></label>
+          <label>Variavel Y<select id="yMetric" class="select"></select></label>
+          <label>Agrupar por<select id="groupMetric" class="select"></select></label>
+          <label>Tipo<select id="chartType" class="select"><option value="bar">Barras</option><option value="line">Linha</option><option value="scatter">Dispersao</option></select></label>
+        </div>
+        <div id="customCharts" class="custom-charts"></div>
+      </section>
+    </main>
+
+    <template id="widgetTemplate">
+      <article class="widget" draggable="true">
+        <header><div><p class="eyebrow widget-type"></p><h3></h3></div><div class="widget-actions"><button class="icon-button shrink" title="Contrair">-</button><button class="icon-button expand" title="Expandir">+</button></div></header>
+        <div class="widget-body"></div>
+      </article>
+    </template>
+
+    <script src="src/app.js"></script>
+  </body>
+</html>
