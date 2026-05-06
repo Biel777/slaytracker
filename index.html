@@ -21,6 +21,8 @@
     </header>
 
     <main>
+      <section class="character-tabs" id="characterTabs" aria-label="Sessoes por personagem"></section>
+
       <section class="view active" id="upload">
         <div class="upload-shell">
           <div class="upload-panel">
@@ -48,18 +50,36 @@
               <span>Modo escuro</span>
               <input id="themeToggle" type="checkbox" checked />
             </label>
-            <label class="check-row"><input type="checkbox" class="analysis-toggle" value="deaths" checked /><span>Trackear mortes e encontros fatais</span></label>
-            <label class="check-row"><input type="checkbox" class="analysis-toggle" value="floors" checked /><span>Progressao por floor level</span></label>
-            <label class="check-row"><input type="checkbox" class="analysis-toggle" value="deck" checked /><span>Tamanho do deck x win rate</span></label>
-            <label class="check-row"><input type="checkbox" class="analysis-toggle" value="cards" checked /><span>Pick rate e win rate por carta</span></label>
-            <label class="check-row"><input type="checkbox" class="analysis-toggle" value="economy" checked /><span>Ouro, dano e cura por run</span></label>
+            <label class="check-row">
+              <input type="checkbox" class="analysis-toggle" value="deaths" checked />
+              <span>Trackear mortes e encontros fatais</span>
+            </label>
+            <label class="check-row">
+              <input type="checkbox" class="analysis-toggle" value="floors" checked />
+              <span>Progressao por floor level</span>
+            </label>
+            <label class="check-row">
+              <input type="checkbox" class="analysis-toggle" value="deck" checked />
+              <span>Tamanho do deck x win rate</span>
+            </label>
+            <label class="check-row">
+              <input type="checkbox" class="analysis-toggle" value="cards" checked />
+              <span>Pick rate e win rate por carta</span>
+            </label>
+            <label class="check-row">
+              <input type="checkbox" class="analysis-toggle" value="economy" checked />
+              <span>Ouro, dano e cura por run</span>
+            </label>
           </aside>
         </div>
       </section>
 
       <section class="view" id="dashboard">
         <div class="section-head">
-          <div><p class="eyebrow">Widgets</p><h2>Dashboard inicial</h2></div>
+          <div>
+            <p class="eyebrow">Widgets</p>
+            <h2>Dashboard inicial</h2>
+          </div>
           <button class="ghost" id="resetLayout">Resetar layout</button>
         </div>
         <div class="kpi-grid" id="kpiGrid"></div>
@@ -68,7 +88,10 @@
 
       <section class="view" id="library">
         <div class="section-head">
-          <div><p class="eyebrow">Detalhe</p><h2>Tabelas e graficos separados</h2></div>
+          <div>
+            <p class="eyebrow">Detalhe</p>
+            <h2>Tabelas e graficos separados</h2>
+          </div>
           <select id="detailSelect" class="select"></select>
         </div>
         <div id="detailContent" class="detail-content"></div>
@@ -76,14 +99,33 @@
 
       <section class="view" id="builder">
         <div class="section-head">
-          <div><p class="eyebrow">Sandbox</p><h2>Crie suas proprias analises</h2></div>
+          <div>
+            <p class="eyebrow">Sandbox</p>
+            <h2>Crie suas proprias analises</h2>
+          </div>
           <button class="primary" id="addCustomChart">Gerar grafico</button>
         </div>
         <div class="builder-grid">
-          <label>Variavel X<select id="xMetric" class="select"></select></label>
-          <label>Variavel Y<select id="yMetric" class="select"></select></label>
-          <label>Agrupar por<select id="groupMetric" class="select"></select></label>
-          <label>Tipo<select id="chartType" class="select"><option value="bar">Barras</option><option value="line">Linha</option><option value="scatter">Dispersao</option></select></label>
+          <label>
+            Variavel X
+            <select id="xMetric" class="select"></select>
+          </label>
+          <label>
+            Variavel Y
+            <select id="yMetric" class="select"></select>
+          </label>
+          <label>
+            Agrupar por
+            <select id="groupMetric" class="select"></select>
+          </label>
+          <label>
+            Tipo
+            <select id="chartType" class="select">
+              <option value="bar">Barras</option>
+              <option value="line">Linha</option>
+              <option value="scatter">Dispersao</option>
+            </select>
+          </label>
         </div>
         <div id="customCharts" class="custom-charts"></div>
       </section>
@@ -91,7 +133,16 @@
 
     <template id="widgetTemplate">
       <article class="widget" draggable="true">
-        <header><div><p class="eyebrow widget-type"></p><h3></h3></div><div class="widget-actions"><button class="icon-button shrink" title="Contrair">-</button><button class="icon-button expand" title="Expandir">+</button></div></header>
+        <header>
+          <div>
+            <p class="eyebrow widget-type"></p>
+            <h3></h3>
+          </div>
+          <div class="widget-actions">
+            <button class="icon-button shrink" title="Contrair">-</button>
+            <button class="icon-button expand" title="Expandir">+</button>
+          </div>
+        </header>
         <div class="widget-body"></div>
       </article>
     </template>
